@@ -2,7 +2,7 @@
 	"name": "emp-sync-base",
 	"displayName": "emp-sync-base",
 	"description": "It can sync something for emp",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"publisher": "Benny",
 	"engines": {
 		"vscode": "^1.47.0"
