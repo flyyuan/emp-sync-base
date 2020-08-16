@@ -792,6 +792,11 @@ get-caller-file@^2.0.1:
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
+git-promise@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/git-promise/-/git-promise-1.0.0.tgz#6337fa79b72f9a2370863d43059a6259e01922eb"
+  integrity sha512-GAhWltNB3/sf/48MwE7MbObDM2tDls9YIvVlUmga3gyqSMZG3wHEMhGSQB6genvmnbbHMxCkpVVl5YP6qGQn3w==
+
 glob-parent@^5.0.0, glob-parent@~5.1.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.1.tgz#b6c1ef417c4e5663ea498f1c45afac6916bbc229"

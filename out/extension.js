@@ -15,6 +15,8 @@ exports.deactivate = exports.activate = void 0;
 const vscode = require("vscode");
 const fs = require("fs");
 const axios_1 = require("axios");
+const downloadRepo_1 = require("./utils/downloadRepo");
+const { exec } = require("child_process");
 const projectDir = () => {
     var _a;
     //获取项目根目录
@@ -54,16 +56,70 @@ const updateTimer = () => {
         get();
     }, 1800000);
 };
+const inputProjectName = () => __awaiter(void 0, void 0, void 0, function* () {
+    const name = yield vscode.window.showInputBox({ placeHolder: '请输入新建项目名' });
+    return name;
+});
+const getTemplate = (localPath, projectName) => {
+    // Efox/cli 脚手架模板库地址
+    const httpPath = `https://git.yy.com/webs/efox/efox-cli-config.git`;
+    return downloadRepo_1.default(httpPath, localPath, projectName, "");
+};
+const selectTemplate = (path) => __awaiter(void 0, void 0, void 0, function* () {
+    const pickList = [];
+    const config = yield Promise.resolve().then(() => require(path));
+    config.template.map((item) => {
+        pickList.push({
+            label: item.name,
+            description: item.description,
+            detail: item.git,
+        });
+    });
+    const item = yield vscode.window.showQuickPick(pickList);
+    return item;
+});
+const initProject = () => __awaiter(void 0, void 0, void 0, function* () {
+    const inputName = yield inputProjectName();
+    const path = projectDir();
+    const configPath = `${path}/templateConfig${new Date().getTime()}`;
+    getTemplate(configPath, "templateConfig")
+        .then((res) => __awaiter(void 0, void 0, void 0, function* () {
+        // 选择模板项目
+        const template = yield selectTemplate(`${configPath}/config.json`);
+        // 删除配置文件
+        exec(`rm -rf ${configPath}`);
+        const projectName = inputName || template.label;
+        if (template.detail && template.label) {
+            yield downloadRepo_1.default(template.detail, `${path}/${projectName}`, projectName || template.label, "");
+            // VSCode 打开 新项目 
+            exec(`code ${path}/${projectName}`);
+            vscode.window.showInformationMessage(`${projectName} Init Finish!`);
+        }
+        else {
+            vscode.window.showInformationMessage(`${projectName} Init Error!`);
+        }
+    }))
+        .catch((e) => {
+        console.error(e);
+        vscode.window.showInformationMessage(e);
+    });
+});
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
     get();
     updateTimer();
     // 命令
-    let disposable = vscode.commands.registerCommand("emp-sync-base.syncCommand", () => {
+    // 同步
+    const sync = vscode.commands.registerCommand("emp-sync-base.syncCommand", () => {
         get();
     });
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(sync);
+    // 初始化项目
+    const init = vscode.commands.registerCommand("emp-sync-base.initCommand", () => {
+        initProject();
+    });
+    context.subscriptions.push(init);
 }
 exports.activate = activate;
 // this method is called when your extension is deactivated

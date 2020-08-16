@@ -20,6 +20,10 @@
 			{
 				"command": "emp-sync-base.syncCommand",
 				"title": "EMP Remote Sync"
+			},
+			{
+				"command": "emp-sync-base.initCommand",
+				"title": "EMP Init"
 			}
 		],
 		"configuration": {
@@ -56,6 +60,7 @@
 	},
 	"dependencies": {
 		"axios": "^0.19.2",
+		"git-promise": "^1.0.0",
 		"vsce": "^1.77.0"
 	}
 }
