@@ -87,7 +87,7 @@ const getTemplate = (localPath: string, projectName: string) => {
 const selectTemplate = async (path: string): Promise<QuickPickItem> => {
   const pickList: Array<any> = [];
   const config = await import(path);
-  config.template.map((item) => {
+  config.template.map((item: { name: any; description: any; git: any; }) => {
     pickList.push({
       label: item.name,
       description: item.description,
