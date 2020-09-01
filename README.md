@@ -1,10 +1,27 @@
 # emp-sync-base README
 
 ## Features
++ 初始化 EMP 项目
++ 为 EMP 项目同步任何文件到项目的src目录，包括但不限于 d.ts 文件
 
-为 EMP 项目同步任何文件到项目的src目录，包括但不限于 d.ts 文件
+# 初始化
+### 启动初始化
+使用 command + P , 输入命令
+```
+>EMP Init
+```
+### 输入项目名
+![](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5e9f1c47c83d44ad8d6fba5d71beaa4d~tplv-k3u1fbpfcp-zoom-1.image)
 
-## usage
+### 选择初始化模板
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f5d3185367594f838d6384bd4f8f862c~tplv-k3u1fbpfcp-zoom-1.image)
+
+### VSCode 自启动初始化好的项目
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/22a0d00d558d4d9db9d7d11e480cec85~tplv-k3u1fbpfcp-zoom-1.image)
+
+
+
+# 同步
 
 ### 配置需同步的文件地址和文件名
 
