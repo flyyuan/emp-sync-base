@@ -2,8 +2,9 @@
 	"name": "emp-sync-base",
 	"displayName": "emp-sync-base",
 	"description": "It can sync something for emp",
-	"version": "0.1.2",
+	"version": "0.1.5",
 	"publisher": "Benny",
+	"repository":"https://github.com/flyyuan/emp-sync-base",
 	"engines": {
 		"vscode": "^1.47.0"
 	},

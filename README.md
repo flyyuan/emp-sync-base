@@ -39,7 +39,12 @@
     ]
 ```
 
-## 更新周期
+### 左下角同步按钮
+
+点击 同步emp基站 马上同步您所配置的目标资源
+![img](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0dfa369734af458fa64ec811e438ef1a~tplv-k3u1fbpfcp-zoom-1.image)
+
+## 自动更新周期
 
 + VSCode 打开时更新一次
 + VSCode 在运行时，每半小时更新一次
@@ -47,6 +52,7 @@
 ### 立即同步
 
 使用 command + P , 输入命令 >EMP Remote Sync
+或点击左下角 同步emp基站
 
 ## more
 

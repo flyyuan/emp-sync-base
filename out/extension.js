@@ -104,6 +104,15 @@ const initProject = () => __awaiter(void 0, void 0, void 0, function* () {
         vscode.window.showInformationMessage(e);
     });
 });
+const initBarButton = () => {
+    // 状态栏按钮
+    let syncStatusBarItem;
+    syncStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+    syncStatusBarItem.command = 'emp-sync-base.syncCommand';
+    syncStatusBarItem.text = '同步emp基站';
+    syncStatusBarItem.show();
+    return syncStatusBarItem;
+};
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
@@ -120,6 +129,8 @@ function activate(context) {
         initProject();
     });
     context.subscriptions.push(init);
+    const syncStatusBarItem = initBarButton();
+    context.subscriptions.push(syncStatusBarItem);
 }
 exports.activate = activate;
 // this method is called when your extension is deactivated
